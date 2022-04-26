@@ -1,0 +1,266 @@
+#pragma once
+#include <vulkan/vulkan.h>
+#include <vector>
+
+
+class DescriptorSet;
+
+#define MAX_TEXTURE_COUNT 1000
+
+static const std::vector<VkDescriptorSetLayoutBinding> layout_definition_deferred_geometry_pass =
+{
+	{
+		0,
+		VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+		1,
+		VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		1,
+		VK_DESCRIPTOR_TYPE_SAMPLER,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		2,
+		VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE,
+		MAX_TEXTURE_COUNT,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		3,
+		VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	}
+};
+
+static const std::vector<VkDescriptorSetLayoutBinding> layout_definition_deferred_shading_pass =
+{
+	{
+		0,
+		VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+		1,
+		VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		1,
+		VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		2,
+		VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		3,
+		VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		4,
+		VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		5,
+		VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		6,
+		VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		7,
+		VK_DESCRIPTOR_TYPE_STORAGE_IMAGE,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	}
+};
+
+static const std::vector<VkDescriptorSetLayoutBinding> layout_definition_deferred_particel_pass =
+{
+	{
+		0,
+		VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+		1,
+		VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT | VK_SHADER_STAGE_GEOMETRY_BIT
+	},
+	{
+		1,
+		VK_DESCRIPTOR_TYPE_SAMPLER,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		2,
+		VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		2,
+		VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE,
+		2,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	}
+};
+
+static const std::vector<VkDescriptorSetLayoutBinding> layout_definition_rt_intergration_pass =
+{
+	{
+		0,
+		VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+		1,
+		VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		1,
+		VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+		1,
+		VK_SHADER_STAGE_COMPUTE_BIT
+	},
+	{
+		2,
+		VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+		1,
+		VK_SHADER_STAGE_COMPUTE_BIT
+	}
+};
+
+static const std::vector<VkDescriptorSetLayoutBinding> layout_definition_rt_collision_pass =
+{
+	{
+		0,
+		VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+		1,
+		VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{
+		1,
+		VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+		1,
+		VK_SHADER_STAGE_COMPUTE_BIT
+	},
+	{
+		2,
+		VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR,
+		1,
+		VK_SHADER_STAGE_COMPUTE_BIT
+	}
+};
+
+static const std::vector<VkDescriptorSetLayoutBinding> layout_definition_path_tracing =
+{
+	{
+		0,
+		VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+		1,
+		VK_SHADER_STAGE_RAYGEN_BIT_KHR | VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR
+	},
+	{
+		1,
+		VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+		1,
+		VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR | VK_SHADER_STAGE_ANY_HIT_BIT_KHR
+	},
+	{
+		2,
+		VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR,
+		1,
+		VK_SHADER_STAGE_RAYGEN_BIT_KHR | VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR
+	},
+	{
+		3,
+		VK_DESCRIPTOR_TYPE_SAMPLER,
+		1,
+		VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR | VK_SHADER_STAGE_ANY_HIT_BIT_KHR
+	},
+	{
+		4,
+		VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE,
+		MAX_TEXTURE_COUNT,
+		VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR | VK_SHADER_STAGE_ANY_HIT_BIT_KHR
+	},
+	{
+		5,
+		VK_DESCRIPTOR_TYPE_STORAGE_IMAGE,
+		1,
+		VK_SHADER_STAGE_RAYGEN_BIT_KHR
+	},
+
+};
+
+static const std::vector<VkDescriptorSetLayoutBinding> layout_definition_classic_physics =
+{
+	{
+		0,
+		VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+		1,
+		VK_SHADER_STAGE_COMPUTE_BIT
+	},
+	{
+		1,
+		VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+		1,
+		VK_SHADER_STAGE_COMPUTE_BIT
+	},
+	{
+		2,
+		VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+		1,
+		VK_SHADER_STAGE_COMPUTE_BIT
+	}
+};
+
+
+static const std::vector<VkDescriptorSetLayoutBinding> layout_definition_depth_peeling =
+{
+	{
+		0,
+		VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+		1,
+		VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+	{	// counters
+		1,
+		VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+
+	{	// linked list
+		2,
+		VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+
+	{	// head pointer image 
+		3,
+		VK_DESCRIPTOR_TYPE_STORAGE_IMAGE,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+
+	{	// final particle storage buffer
+		4,
+		VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+		1,
+		VK_SHADER_STAGE_FRAGMENT_BIT
+	},
+
+
+};
+
+typedef const std::vector<VkDescriptorSetLayoutBinding> descriptor_set_layout_definition_t;
+

@@ -1,0 +1,50 @@
+#version 460
+#extension GL_GOOGLE_include_directive : enable
+#extension GL_EXT_ray_tracing : require
+#extension GL_EXT_shader_explicit_arithmetic_types_int64 : require
+#extension GL_EXT_nonuniform_qualifier : enable
+#extension GL_EXT_scalar_block_layout : enable
+#extension GL_EXT_buffer_reference2 : require
+
+#include "render_common.glsl"
+#include "rt_common.glsl"
+
+hitAttributeEXT vec2 attribs;
+layout(binding = 0) uniform PER_FRAME_CONSTANTS { PerFrameConstants pfc; };
+layout(binding = 1) buffer instances {InstanceDescriptor inst[];};
+//layout(binding = 2, set = 0) uniform accelerationStructureEXT topLevelAS;
+layout(binding = 3) uniform sampler smp;
+layout(binding = 4) uniform texture2D tex[TEXTURE_COUNT];
+
+
+layout(buffer_reference, scalar) buffer Indices {ivec3 d[]; };
+layout(buffer_reference, scalar) buffer Vertices {Vertex d[]; };
+layout(buffer_reference, scalar) buffer Materials {Material d[]; };
+
+
+void main()
+{
+	//ignoreIntersectionEXT;
+	InstanceDescriptor	instance	= inst[gl_InstanceCustomIndexEXT];
+	Indices				indices     = Indices(instance.indices);
+	Vertices			vertices    = Vertices(instance.vertices);
+	Materials			materials   = Materials(instance.materials);
+
+	Material	mat = materials.d[gl_GeometryIndexEXT];
+	ivec3		ind = indices.d[gl_PrimitiveID + mat.indexOffset/3];
+	Vertex		v0 = vertices.d[ind.x];
+	Vertex		v1 = vertices.d[ind.y];
+	Vertex		v2 = vertices.d[ind.z];
+
+	//##################### Interpolate ############################
+	const vec3 barycentrics = vec3(1.0 - attribs.x - attribs.y, attribs.x, attribs.y);
+	vec2 texCoords = v0.uvCoord * barycentrics.x + v1.uvCoord * barycentrics.y + v2.uvCoord * barycentrics.z;
+	float coverage = 1.0;
+	if(mat.tex_idx_coverage != MAX_UINT)coverage	= texture(sampler2D(tex[mat.tex_idx_coverage], smp), texCoords).a;
+
+	if(coverage < 0.5)
+	{
+		ignoreIntersectionEXT;
+	}
+
+}

@@ -1,0 +1,699 @@
+# Blender MTL File: 'sunTemple.blend'
+# Material Count: 50
+
+
+
+newmtl M_Puddle
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump puddle_normal.png
+map_Kd puddle_blue_albedo.png
+map_Ks puddle_specular.png
+
+newmtl M_Leaves
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump leaves_normal.png
+map_Kd leaves_diffuse_albedo.png
+map_Ks leaves_specular.png
+
+
+newmtl M_Pentagram
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd pentagram_diffuse_albedo.png
+
+
+
+
+
+
+
+
+
+newmtl M_Arch_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Arch_Inst_0_Normal.png
+map_Kd M_Arch_Inst_0_BaseColor.png
+map_Ks M_Arch_Inst_0_Specular.png
+
+newmtl M_Arch_Inst_2
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Arch_Inst_2_0_Normal.png
+map_Kd M_Arch_Inst_2_0_BaseColor.png
+map_Ks M_Arch_Inst_2_0_Specular.png
+
+newmtl M_Arch_Inst_Red
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Arch_Inst_Red_0_Normal.png
+map_Kd M_Arch_Inst_Red_0_BaseColor.png
+map_Ks M_Arch_Inst_Red_0_Specular.png
+
+newmtl M_Arch_Inst_Red_2
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Arch_Inst_Red_2_0_Normal.png
+map_Kd M_Arch_Inst_Red_2_0_BaseColor.png
+map_Ks M_Arch_Inst_Red_2_0_Specular.png
+
+newmtl M_BottomTrim_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_BottomTrim_Inst_0_Normal.png
+map_Kd M_BottomTrim_Inst_0_BaseColor.png
+map_Ks M_BottomTrim_Inst_0_Specular.png
+
+newmtl M_BottomTrim_Inst_Black
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_BottomTrim_Inst_Black_0_Normal.png
+map_Kd M_BottomTrim_Inst_Black_0_BaseColor.png
+map_Ks M_BottomTrim_Inst_Black_0_Specular.png
+
+newmtl M_BottomTrim_Inst_UTile4
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_BottomTrim_Inst_UTile4_0_Normal.png
+map_Kd M_BottomTrim_Inst_UTile4_0_BaseColor.png
+map_Ks M_BottomTrim_Inst_UTile4_0_Specular.png
+
+newmtl M_Dome_2
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Dome_2_0_Normal.png
+map_Kd M_Dome_2_0_BaseColor.png
+map_Ks M_Dome_2_0_Specular.png
+
+newmtl M_Dome_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Dome_Inst_0_Normal.png
+map_Kd M_Dome_Inst_0_BaseColor.png
+map_Ks M_Dome_Inst_0_Specular.png
+
+newmtl M_FirePit_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_FirePit_Inst_0_Normal.png
+map_Kd M_FirePit_Inst_0_BaseColor.png
+map_Ke M_FirePit_Inst_0_Emissive.png
+map_Ks M_FirePit_Inst_0_Specular.png
+
+newmtl M_FirePit_Inst_Glow
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_FirePit_Inst_Glow_0_Normal.png
+map_Kd M_FirePit_Inst_Glow_0_BaseColor.png
+map_Ke M_FirePit_Inst_Glow_0_Emissive.png
+map_Ks M_FirePit_Inst_Glow_0_Specular.png
+
+newmtl M_FirePit_Inst_nofire
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_FirePit_Inst_nofire_0_Normal.png
+map_Kd M_FirePit_Inst_nofire_0_BaseColor.png
+map_Ks M_FirePit_Inst_nofire_0_Specular.png
+
+newmtl M_FloorTiles1_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_FloorTiles1_Inst_0_Normal.png
+map_Kd M_FloorTiles1_Inst_0_BaseColor.png
+map_Ks M_FloorTiles1_Inst_0_Specular.png
+
+newmtl M_FloorTiles1_Inst_Blue
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_FloorTiles1_Inst_Blue_0_Normal.png
+map_Kd M_FloorTiles1_Inst_Blue_0_BaseColor.png
+map_Ks M_FloorTiles1_Inst_Blue_0_Specular.png
+
+newmtl M_FloorTiles1_Inst_Inst2
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_FloorTiles1_Inst_Inst2_0_Normal.png
+map_Kd M_FloorTiles1_Inst_Inst2_0_BaseColor.png
+map_Ks M_FloorTiles1_Inst_Inst2_0_Specular.png
+
+newmtl M_FloorTiles2_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_FloorTiles2_Inst_0_Normal.png
+map_Kd M_FloorTiles2_Inst_0_BaseColor.png
+map_Ks M_FloorTiles2_Inst_0_Specular.png
+
+newmtl M_FloorTiles2_Inst_Inst_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_FloorTiles2_Inst_Inst_Inst_0_Normal.png
+map_Kd M_FloorTiles2_Inst_Inst_Inst_0_BaseColor.png
+map_Ks M_FloorTiles2_Inst_Inst_Inst_0_Specular.png
+
+newmtl M_FloorTiles2_Inst_REd
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_FloorTiles2_Inst_REd_0_Normal.png
+map_Kd M_FloorTiles2_Inst_REd_0_BaseColor.png
+map_Ks M_FloorTiles2_Inst_REd_0_Specular.png
+
+newmtl M_Pillar_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Pillar_Inst_0_Normal.png
+map_Kd M_Pillar_Inst_0_BaseColor.png
+map_Ks M_Pillar_Inst_0_Specular.png
+
+newmtl M_Pillar_Inst_Colored
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Pillar_Inst_Colored_0_Normal.png
+map_Kd M_Pillar_Inst_Colored_0_BaseColor.png
+map_Ks M_Pillar_Inst_Colored_0_Specular.png
+
+newmtl M_Railing_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Railing_Inst_0_Normal.png
+map_Kd M_Railing_Inst_0_BaseColor.png
+map_Ks M_Railing_Inst_0_Specular.png
+
+newmtl M_Rocks_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Rocks_Inst_0_Normal.png
+map_Kd M_Rocks_Inst_0_BaseColor.png
+map_Ks M_Rocks_Inst_0_Specular.png
+
+newmtl M_Rocks_Inst.001
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Rocks_Inst_1_Normal.png
+map_Kd M_Rocks_Inst_1_BaseColor.png
+map_Ks M_Rocks_Inst_1_Specular.png
+
+newmtl M_Rocks_Inst.002
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Rocks_Inst_2_Normal.png
+map_Kd M_Rocks_Inst_2_BaseColor.png
+map_Ks M_Rocks_Inst_2_Specular.png
+
+newmtl M_Shield_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Shield_Inst_0_Normal.png
+map_Kd M_Shield_Inst_0_BaseColor.png
+map_Ks M_Shield_Inst_0_Specular.png
+
+newmtl M_Soul_Rocks2_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_0_Normal.png
+map_Kd M_Soul_Rocks2_Inst_0_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_0_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.001
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_1_Normal.png
+map_Kd M_Soul_Rocks2_Inst_1_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_1_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.002
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_2_Normal.png
+map_Kd M_Soul_Rocks2_Inst_2_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_2_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.003
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_3_Normal.png
+map_Kd M_Soul_Rocks2_Inst_3_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_3_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.004
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_4_Normal.png
+map_Kd M_Soul_Rocks2_Inst_4_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_4_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.005
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_5_Normal.png
+map_Kd M_Soul_Rocks2_Inst_5_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_5_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.006
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_6_Normal.png
+map_Kd M_Soul_Rocks2_Inst_6_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_6_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.007
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_7_Normal.png
+map_Kd M_Soul_Rocks2_Inst_7_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_7_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.008
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_8_Normal.png
+map_Kd M_Soul_Rocks2_Inst_8_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_8_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.009
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_9_Normal.png
+map_Kd M_Soul_Rocks2_Inst_9_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_9_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.010
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_10_Normal.png
+map_Kd M_Soul_Rocks2_Inst_10_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_10_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.011
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_11_Normal.png
+map_Kd M_Soul_Rocks2_Inst_11_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_11_Specular.png
+
+newmtl M_Soul_Rocks2_Inst.012
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Soul_Rocks2_Inst_12_Normal.png
+map_Kd M_Soul_Rocks2_Inst_12_BaseColor.png
+map_Ks M_Soul_Rocks2_Inst_12_Specular.png
+
+newmtl M_Stairs_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Stairs_Inst_0_Normal.png
+map_Kd M_Stairs_Inst_0_BaseColor.png
+map_Ks M_Stairs_Inst_0_Specular.png
+
+newmtl M_Statue_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Statue_Inst_0_Normal.png
+map_Kd M_Statue_Inst_0_BaseColor.png
+map_Ks M_Statue_Inst_0_Specular.png
+
+newmtl M_StoneBrickWall_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_StoneBrickWall_Inst_0_Normal.png
+map_Kd M_StoneBrickWall_Inst_0_BaseColor.png
+map_Ks M_StoneBrickWall_Inst_0_Specular.png
+
+newmtl M_StoneCeiling_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_StoneCeiling_Inst_0_Normal.png
+map_Kd M_StoneCeiling_Inst_0_BaseColor.png
+map_Ks M_StoneCeiling_Inst_0_Specular.png
+
+newmtl M_TreeTrunk01_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_TreeTrunk01_Inst_0_Normal.png
+map_Kd M_TreeTrunk01_Inst_0_BaseColor.png
+map_Ks M_TreeTrunk01_Inst_0_Specular.png
+
+newmtl M_Tree_Branches
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Tree_Branches_0_Normal.png
+map_Kd M_Tree_Branches_0_BaseColor.png
+map_Ks M_Tree_Branches_0_Specular.png
+map_d M_Tree_Branches_0_BaseColor.png
+
+newmtl M_Tree_Branches_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Tree_Branches_Inst_0_Normal.png
+map_Kd M_Tree_Branches_Inst_0_BaseColor.png
+map_Ke M_Tree_Branches_Inst_0_Emissive.png
+map_Ks M_Tree_Branches_Inst_0_Specular.png
+map_d M_Tree_Branches_Inst_0_BaseColor.png
+
+newmtl M_Trim_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Trim_Inst_0_Normal.png
+map_Kd M_Trim_Inst_0_BaseColor.png
+map_Ks M_Trim_Inst_0_Specular.png
+
+newmtl M_Trim_Inst_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump M_Trim_Inst_Inst_0_Normal.png
+map_Kd M_Trim_Inst_Inst_0_BaseColor.png
+map_Ks M_Trim_Inst_Inst_0_Specular.png
+
+newmtl Material
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl None
+Ns 500
+Ka 0.8 0.8 0.8
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+newmtl Soul_Tree011M_Inst
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump Soul_Tree011M_Inst_0_Normal.png
+map_Kd Soul_Tree011M_Inst_0_BaseColor.png
+map_Ke Soul_Tree011M_Inst_0_Emissive.png
+map_Ks Soul_Tree011M_Inst_0_Specular.png
+map_d Soul_Tree011M_Inst_0_BaseColor.png

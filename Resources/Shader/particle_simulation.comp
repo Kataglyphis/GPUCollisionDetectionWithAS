@@ -1,0 +1,186 @@
+#version 460 
+#extension GL_GOOGLE_include_directive : enable
+
+#extension GL_EXT_ray_tracing : enable
+#extension GL_EXT_ray_query : require
+#extension GL_EXT_nonuniform_qualifier : enable
+#extension GL_EXT_scalar_block_layout : enable
+
+#extension GL_ARB_separate_shader_objects : enable
+
+#extension GL_EXT_shader_explicit_arithmetic_types_int64 : require
+#extension GL_EXT_buffer_reference2 : require
+#extension GL_EXT_shader_atomic_float : require
+
+#include "GlobalValues.glsl"
+#include "rt_common.glsl"
+#include "render_common.glsl"
+#include "quaternion.glsl"
+
+layout(local_size_x_id = 0, local_size_y_id = 1, local_size_z_id = 2) in; 
+
+layout(binding = 0) buffer buf {
+	Particle particles[];
+};
+
+layout(binding = 1) uniform _ComputeUBO {
+	ComputeUBO compute_ubo;
+};
+
+layout(binding = 2) uniform sampler3D firstVectorField;
+layout(binding = 3) uniform sampler3D secondVectorField;
+layout(binding = 4) uniform sampler3D thirdVectorField;
+
+layout(push_constant) uniform _PushConstantCompute {
+	PushConstantCompute pc_compute;
+};
+
+layout(set = 0, binding = 5) uniform accelerationStructureEXT TLAS;
+
+layout(binding = 6) buffer Instances {InstanceDescriptor inst[];};
+
+layout(buffer_reference, scalar) buffer Vertices {Vertex v[]; };
+layout(buffer_reference, scalar) buffer Indices {ivec3 i[]; };
+
+void main() {
+	
+	/**
+	Layout particle buffer:
+	Particles[numParticlesZ * numParticlesY * numParticlesX]
+	f.e. u want the particle on the 3D-Position (x,y,z) than do 
+	Particles[z * numParticlesY * numParticlesX + y * numParticlesX + x]
+	*/
+
+	if(	int(gl_GlobalInvocationID.x) >= int(pc_compute.numberAndTypeOfParticles.x) ||
+		int(gl_GlobalInvocationID.y) >= int(pc_compute.numberAndTypeOfParticles.y) || 
+		int(gl_GlobalInvocationID.z) >= int(pc_compute.numberAndTypeOfParticles.z)	) return;
+
+	int index = int(gl_GlobalInvocationID.z) * int(pc_compute.numberAndTypeOfParticles.x) * int(pc_compute.numberAndTypeOfParticles.y) + 
+				int(gl_GlobalInvocationID.y) * int(pc_compute.numberAndTypeOfParticles.x) +
+				int(gl_GlobalInvocationID.x);
+
+	vec3 vectorFieldLimits = pc_compute.limitsAndTime.xyz;
+
+	vec3 current_velocity = particles[index].velocity.xyz;
+
+	// Keep in mind: because we are reading from a texture we need positive indices
+	// thats the reason why values for negative 3D-positions are stored at positive positions
+
+	vec3 particleWorldPosition = vec3(pc_compute.particleModel * vec4(particles[index].position.xyz, 1.0f));
+
+	bool particleIsOutsideVectorField = particles[index].position.x + (vectorFieldLimits.x) < 0.0f			|| 
+										particles[index].position.y + (vectorFieldLimits.y) < 0.0f			||
+										particles[index].position.z + (vectorFieldLimits.z) < 0.0f			||
+										particles[index].position.x				> (vectorFieldLimits.x)		||
+										particles[index].position.y				> (vectorFieldLimits.y)		||
+										particles[index].position.z				> (vectorFieldLimits.z);	
+
+
+	if (!particleIsOutsideVectorField) { 
+		// particle postion is the texture coord. 
+		// we allow negative positions; therefore add vector field limits
+		vec3 texture_coords = particles[index].position.xyz + vectorFieldLimits;
+		// normalized coords 
+		texture_coords		/= 2.f*vectorFieldLimits;
+		texture_coords		= clamp(texture_coords,vec3(0.f),vec3(1.f));
+
+		current_velocity	=	pc_compute.velocities.y	* texture(firstVectorField, texture_coords).xyz + 
+								pc_compute.velocities.y	* texture(secondVectorField, texture_coords).xyz + 
+								pc_compute.velocities.z	* texture(thirdVectorField, texture_coords).xyz;
+
+	}
+
+	atomicExchange(particles[index].velocity.x, current_velocity.x);
+	atomicExchange(particles[index].velocity.y, current_velocity.y);
+	atomicExchange(particles[index].velocity.z, current_velocity.z);
+
+	vec3 current_color = particles[index].color.xyz;
+
+	// we need the world position to calculate hit
+	vec3 origin = vec3(pc_compute.particleModel * vec4(particles[index].position.xyz, 1.0f));//vec3(particles[index].position.xyz);
+	vec3 direction = normalize(particles[index].velocity.xyz);
+	float tMin = 0.0;
+	float tMax = length(particles[index].velocity) * pc_compute.velocities.w;//
+	rayQueryEXT rayQuery;
+	bool hit = false;
+	rayQueryInitializeEXT(rayQuery, TLAS, gl_RayFlagsTerminateOnFirstHitEXT | gl_RayFlagsOpaqueEXT, 0xFF, origin, tMin, direction, tMax);
+
+	while(rayQueryProceedEXT(rayQuery)){}
+
+	float closest_t = 0.0f;
+
+	if (rayQueryGetIntersectionTypeEXT(rayQuery, true) == gl_RayQueryCommittedIntersectionTriangleEXT ) {
+		hit = true;
+		closest_t = rayQueryGetIntersectionTEXT(rayQuery, true);
+	}
+
+	if(hit){
+
+		int instID = rayQueryGetIntersectionInstanceCustomIndexEXT(rayQuery,true);
+
+		uint64_t verticesAddr	= inst[0].vertices;
+		uint64_t indicesAddr	= inst[0].indices;
+	
+		Vertices vertices			= Vertices(verticesAddr);
+		Indices	indices				= Indices(indicesAddr);
+
+		ivec3 ind = indices.i[instID];
+		Vertex v0 = vertices.v[ind.x];
+		Vertex v1 = vertices.v[ind.y];
+		Vertex v2 = vertices.v[ind.z];
+
+		vec2 baryzentric = rayQueryGetIntersectionBarycentricsEXT(rayQuery, true);
+
+		const vec3 barycentrics			= vec3(1.0 - baryzentric.x - baryzentric.y, baryzentric.x, baryzentric.y);
+		vec3 modelNormal				= v0.normal * barycentrics.x + v1.normal * barycentrics.y + v2.normal * barycentrics.z;
+		vec3 N							= (inst[instID].modelMat*vec4(modelNormal, 0.0)).xyz;
+		
+		if(dot(-pc_compute.view, vec4(N, 0.0f)) < 0) {
+			
+			N*= -1.f;
+
+		}
+
+		// 0: GLUE, 1: BOUNCE
+		uint particleType = uint(pc_compute.numberAndTypeOfParticles.w);
+
+		// how should we react on a collision? depends on particle type :)
+		vec4 reflected_velocity			= vec4(0.0f);
+		vec4 reflected_acceleration		= vec4(0.0f);
+
+		if(particleType == 0) {
+			
+			// stays zero; it "sticks" to the walls
+			reflected_velocity			= vec4(0.0f);
+			reflected_acceleration		= vec4(0.0f);
+		
+
+		} else if (particleType == 1){
+			
+			// bouncing of as they are balls
+			reflected_velocity			= reflect(particles[index].velocity, normalize(vec4(N,0.0)));
+			reflected_acceleration		= reflect(particles[index].acceleration, normalize(vec4(N,0.0)));
+
+		}
+
+		// in case of a hit correct the position of the particle
+		vec3 new_particle_position = particles[index].position.xyz + closest_t * direction;
+
+		atomicExchange(particles[index].position.x, new_particle_position.x);
+		atomicExchange(particles[index].position.y, new_particle_position.y);
+		atomicExchange(particles[index].position.z, new_particle_position.z);
+
+		// update accordingly
+		atomicExchange(particles[index].velocity.x, reflected_velocity.x);
+		atomicExchange(particles[index].velocity.y, reflected_velocity.y);
+		atomicExchange(particles[index].velocity.z, reflected_velocity.z);
+
+		atomicExchange(particles[index].acceleration.x, reflected_acceleration.x);
+		atomicExchange(particles[index].acceleration.y, reflected_acceleration.y);
+		atomicExchange(particles[index].acceleration.z, reflected_acceleration.z);
+		
+
+	}
+		
+
+}

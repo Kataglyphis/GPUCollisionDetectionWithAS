@@ -1,0 +1,182 @@
+#version 460
+#extension GL_GOOGLE_include_directive : enable
+
+#extension GL_EXT_ray_query : require
+#extension GL_EXT_nonuniform_qualifier : enable
+#extension GL_EXT_scalar_block_layout : enable
+
+
+#extension GL_EXT_shader_explicit_arithmetic_types_int64 : require
+#extension GL_EXT_buffer_reference2 : require
+#extension GL_EXT_shader_atomic_float : require
+
+#include "rt_common.glsl"
+#include "render_common.glsl"
+#include "quaternion.glsl"
+
+layout(local_size_x_id = 0) in;
+
+struct PushConstants
+{
+	vec4		centerOfMass;
+	uint64_t	vertexAddress;
+	uint		numInstances;
+	uint		customIntersectionIndexOffset;
+	uint		numVertices; 
+};
+
+layout(push_constant) uniform PushStruct {PushConstants pc;};
+
+layout(binding = 0) uniform PFC { PerFrameConstants pfc;};
+
+layout(binding = 1) buffer instances {Instance inst[];};
+
+layout(binding = 2, set = 0) uniform accelerationStructureEXT topLevelAS;
+
+layout(buffer_reference, scalar) buffer Vertices {Vertex v[]; };
+
+void main()
+{
+	uint gID = gl_GlobalInvocationID.x;
+	if(gID>pc.numVertices*pc.numInstances)return;
+	uint instId				= gID/pc.numVertices;
+	uint vertId				= gID%pc.numVertices;
+	uint customId			= instId + pc.customIntersectionIndexOffset;
+	//inst[instId].velocity			= vec4(0.0);
+	//inst[instId].angularVelocity.w	= 0.0;
+
+	float deltaT = 0.1;
+	mat4 modelMat			= inst[instId].modelMat;
+	mat4 oldModelMatrix		= inst[instId].oldModelMat;
+	Vertices vertecies		= Vertices(pc.vertexAddress);
+	vec3 pos				= vertecies.v[vertId].pos;
+	vec3 newPos				= vec3(modelMat*vec4(pos, 1.0));
+	vec3 oldPos				= vec3(oldModelMatrix*vec4(pos, 1.0));
+	vec3 centerOfMass		= vec3(modelMat*vec4(pc.centerOfMass.xyz, 1.0));
+	vec3 deltaPos			= newPos - oldPos;
+
+	if(newPos == oldPos)return;
+
+
+
+	//float tMin = 0.000001;
+	float tMin = 0.00001;
+	vec3 direction;
+	float tMax;
+	vec3 origin;
+	
+	uint state = inst[instId].state;
+	if(state != 0)
+	{
+		direction = normalize(centerOfMass-newPos);
+		tMax = length(centerOfMass-newPos);
+		origin = newPos;
+	}
+	else
+	{
+		direction = -normalize(deltaPos);
+		tMax = length(deltaPos);
+		origin = newPos;
+	}
+
+	rayQueryEXT rayQuery;
+	bool hit = false;
+	float t = 0;
+	rayQueryInitializeEXT(rayQuery, topLevelAS,
+	gl_RayFlagsNoneEXT,
+	0xFF, origin, tMin, direction, tMax);
+	while(rayQueryProceedEXT(rayQuery))
+	{
+		if(rayQueryGetIntersectionTypeEXT(rayQuery, true) == gl_RayQueryCommittedIntersectionTriangleEXT)
+		{
+			if(rayQueryGetIntersectionInstanceCustomIndexEXT(rayQuery, true) != customId)
+			{
+				hit = true;
+				t = rayQueryGetIntersectionTEXT(rayQuery, true);
+	
+			}
+		
+		}
+	}
+	
+	if(rayQueryGetIntersectionTypeEXT(rayQuery, true) == gl_RayQueryCommittedIntersectionTriangleEXT)
+	{
+		if(rayQueryGetIntersectionInstanceCustomIndexEXT(rayQuery, true) != customId)
+		{
+			hit = true;
+			t = rayQueryGetIntersectionTEXT(rayQuery, true);
+		}
+	}
+
+
+	// For testing
+	//float radius = 0.005;
+	//if(radius + newPos.y >= 0 )
+	//{
+	//	hit = true;
+	//	t = (radius + newPos.y);
+	//}
+
+
+
+	if(hit)
+	{
+		//vec3 centerOfMass	= vec3(0.0,-0.5,-4.0);
+
+		//float k = 0.2;
+		//float n = 0.8;
+		//float nt = 0.3;
+		//float kt = 8.0;
+
+		float k = 0.3;
+		float n = 0.8;
+		float nt = 0.3;
+		float kt = 8.0;
+
+		//if(state != 0)
+		//{
+		//	k = 0.05;
+		//	n = 0.2;//*t*1000.0;
+		//	nt = 0.05;
+		//}
+
+		//uint idx = rayQueryGetIntersectionInstanceCustomIndexEXT(rayQuery, true);
+		//if(idx == 0 && length(deltaPos) < 0.0001)
+		//{
+		//	k = 0.02;
+		//	n = 0.03;//*t*1000.0;
+		//	nt = 0.02;
+		//	kt = 5.0;
+		//}
+
+
+		 
+		vec3 v				= deltaPos;
+		vec3 r_n			= normalize(newPos-centerOfMass);
+		vec3 r				= newPos-centerOfMass;
+		vec3 fi				= -k*r_n*t;
+		vec3 fd				= -n*v;
+		vec3 ft				= -nt*(v-r_n*dot(r_n, v));
+		vec3 force			= fi + fd + ft;
+		vec3 torque			= cross(r, force)*kt;
+
+		//vec3 velocity = inst[instId].velocity.xyz;
+		//force = -2*velocity;// + reflect(velocity,-r);
+		//torque = -2*inst[instId].angularVelocity.xyz;
+		//force = vec3(0.0,-1.0,0.0)* 500.0*length(v);
+
+		atomicAdd(inst[instId].force.x, force.x);
+		atomicAdd(inst[instId].force.y, force.y);
+		atomicAdd(inst[instId].force.z, force.z);
+
+		atomicAdd(inst[instId].torque.x, torque.x);
+		atomicAdd(inst[instId].torque.y, torque.y);
+		atomicAdd(inst[instId].torque.z, torque.z);
+
+
+		atomicAdd(inst[instId].collisionCount, 1);
+
+		//inst[instId].force = vec4(0.0);
+		//inst[instId].angularVelocity.w	= 0.0;
+	}
+}
