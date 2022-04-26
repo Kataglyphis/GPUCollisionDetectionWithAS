@@ -1,2 +1,10 @@
 .obj filter=lfs diff=lfs merge=lfs -text
 *.obj filter=lfs diff=lfs merge=lfs -text
+
+# exclude all files from language analysis which do not directly contribute to engine
+ExternalLib/** linguist-vendored
+Documents/** linguist-vendored
+build/** linguist-vendored
+
+Resources/Models/** linguist-vendored
+Resources/Textures/** linguist-vendored
