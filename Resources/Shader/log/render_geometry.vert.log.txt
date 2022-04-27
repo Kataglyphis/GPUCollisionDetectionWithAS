@@ -1,0 +1,1 @@
+glslc: error: cannot open output file: 'C:/Users/jonas/Desktop/GPUCollisionDetectionWithAS/build/../Resources/Shader/spv/render_geometry.vert.spv': No such file or directory
