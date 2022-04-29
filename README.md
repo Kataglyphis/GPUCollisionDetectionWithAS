@@ -1,5 +1,5 @@
-# GraphicsEngineVulkan
-Getting started with Vulkan
+# GPUCollisionDetectionWithAS
+Lets collide some things on the GPU with AS.
 
 <h1 align="center">
   <br>
@@ -12,7 +12,6 @@ Getting started with Vulkan
 <h1 align="center">
   <br>
   <a href="https://jotrocken.blog/"><img src="images/vulkan-logo.png" alt="OpenGLEngine" width="400"></a>
-  <a href="https://jotrocken.blog/"><img src="images/Engine_logo.png" alt="OpenGLEngine" width="200"></a>
   <a href="https://jotrocken.blog/"><img src="images/glm_logo.png" alt="OpenGLEngine" width="200"></a>
 </h1>
 
@@ -62,25 +61,18 @@ Getting started with Vulkan
 
 [![Kataglyphis Engine][product-screenshot]](https://jotrocken.blog/)
 
-The thought behind this project is to implement modern algortihms and 
-techniques that modern graphic engines rely on. 
-Furthermore it should serve as a framework to enable further investigations
-in own research topics.
-Feel free to contribute and adding stuff :)
-Reminder: This project is based on my interest in implementing algortihms by
-my own and make own research. Hence you might encounter some bugs. Feel free 
-to report.
+Have a look on the Milestone document for further information.
 
 ### Key Features
 
-
-|          Feature                    |   Implement Status | ◾ Other Configs |
-| ------------------------------------| :----------------: | :-------------: |
-| Rasterizer                          |         ✔️         |        ❌      |
-| Raytracing bascis                   |         ✔️         |        ❌      |
-| PBR support (UE4,disney,phong, etc.)|         ✔️         |        ❌      |
-| .obj Model loading                  |         ✔️         |        ❌      |
-| Mip Mapping                         |         ✔️         |        ❌      |
+<!-- ❌  -->
+|          Feature                    |   Implement Status |
+| ------------------------------------| :----------------: |
+| Rasterizer                          |         ✔️         |    
+| Raytracing bascis                   |         ✔️         |      
+| PBR support                         |         ✔️         |      
+| .obj Model loading                  |         ✔️         |      
+| Mip Mapping                         |         ✔️         |      
 
 ### Built With
 
@@ -92,6 +84,9 @@ to report.
 * [DOXYGEN](https://www.doxygen.nl/index.html)
 * [GTEST](https://github.com/google/googletest)
 * [CMAKE](https://cmake.org/)
+* [VMA](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator)
+* [TINYGLTF](https://github.com/syoyo/tinygltf)
+* [CSVWriter](https://github.com/al-eax/CSVWriter)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -152,12 +147,13 @@ Distributed under the BSD 3-Clause "New" or "Revised" License. See `LICENSE` for
 
 Jonas Heinle - [@Cataglyphis_](https://twitter.com/Cataglyphis_) - jonasheinle@googlemail.com
 
-Project Link: [https://github.com/Kataglyphis/GraphicsEngineVulkan](https://github.com/Kataglyphis/GraphicsEngineVulkan)
+Project Link: [https://github.com/Kataglyphis/GPUCollisionDetectionWithAS](https://github.com/Kataglyphis/GPUCollisionDetectionWithAS)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
+Many thanks to my colleague bringing this to life :)
 
 You will find important links to information in the code.
 But here in general some good sources of information:
@@ -178,6 +174,7 @@ Vulkan
 * [Vulkan Tutorial; especially chapter about integrating imgui](https://frguthmann.github.io/posts/vulkan_imgui/)
 * [NVidia Raytracing tutorial with Vulkan](https://nvpro-samples.github.io/vk_raytracing_tutorial_KHR/)
 * [Blog from Sascha Willems](https://www.saschawillems.de/)
+* [OIT](https://github.com/SaschaWillems/Vulkan/tree/master/examples/oit)
 
 Physically Based Shading
 * [The Bible: PBR book](https://pbr-book.org/3ed-2018/Reflection_Models/Microfacet_Models)
@@ -186,6 +183,13 @@ Physically Based Shading
 * [RealTimeRendering](https://www.realtimerendering.com/)
 * [Understanding the Masking-Shadowing Function in Microfacet-Based BRDFs](https://hal.inria.fr/hal-01024289/)
 * [Sampling the GGX Distribution of Visible Normals](https://pdfs.semanticscholar.org/63bc/928467d760605cdbf77a25bb7c3ad957e40e.pdf)
+
+Physics Simulation
+* [Real-Time Rigid Body Simulation on GPUs](https://developer.nvidia.com/gpugems/gpugems3/part-v-physics-simulation/chapter-29-real-time-rigid-body-simulation-gpus)
+
+Particles
+*[Verlet Integration](https://de.wikipedia.org/wiki/Verlet-Algorithmus)
+*[Vector Fields](https://docs.unrealengine.com/4.27/en-US/RenderingAndGraphics/ParticleSystems/VectorFields/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
