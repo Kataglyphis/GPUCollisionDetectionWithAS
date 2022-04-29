@@ -1,5 +1,5 @@
 # GPUCollisionDetectionWithAS
-Lets collide some things on the GPU with AS.
+Lets collide some things on the GPU with the brand new acceleration structures.
 
 <h1 align="center">
   <br>
@@ -68,9 +68,13 @@ Have a look on the Milestone document for further information.
 | ------------------------------------| :----------------: |
 | Rasterizer                          |         ✔️         |    
 | Raytracing bascis                   |         ✔️         |      
-| PBR support                         |         ✔️         |      
+| PBR support (Frostbite model)       |         ✔️         |      
 | .obj Model loading                  |         ✔️         |      
-| Mip Mapping                         |         ✔️         |      
+| Vector Fields                       |         ✔️         |      
+| GPU Collision Detection with AS     |         ✔️         |
+| GPU Collision Detection with Grid   |         ✔️         |
+| Particle System                     |         ✔️         |
+| Vector Fields                       |         ✔️         |
 
 ### Built With
 
@@ -178,6 +182,7 @@ Physically Based Shading
 * [The Bible: PBR book](https://pbr-book.org/3ed-2018/Reflection_Models/Microfacet_Models)
 * [Real shading in Unreal engine 4](https://blog.selfshadow.com/publications/s2013-shading-course/karis/s2013_pbs_epic_notes_v2.pdf)
 * [Physically Based Shading at Disney](https://blog.selfshadow.com/publications/s2012-shading-course/burley/s2012_pbs_disney_brdf_notes_v3.pdf)
+* [Moving Frostbite to PBR](https://seblagarde.files.wordpress.com/2015/07/course_notes_moving_frostbite_to_pbr_v32.pdf)
 * [RealTimeRendering](https://www.realtimerendering.com/)
 * [Understanding the Masking-Shadowing Function in Microfacet-Based BRDFs](https://hal.inria.fr/hal-01024289/)
 * [Sampling the GGX Distribution of Visible Normals](https://pdfs.semanticscholar.org/63bc/928467d760605cdbf77a25bb7c3ad957e40e.pdf)
@@ -204,40 +209,3 @@ Particles
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/jonas-heinle-0b2a301a0/
 [product-screenshot]: images/Screenshot.png
-
-<!-- # GPUCCollisionDetectionWithAs
-
-Collision Detection using Raytracing acceleration structures:
-
-Idea:
-For particle systems:
-Store the scene geometry (triangles) in the acceleration structure and shot rays proportionally to a objects speed in its moving direction, in order to find intersections.
-
-For rigid objects physics simulation:
-Store AABBs in the acceleration structure and shot rays spanning the bounding box,
-in order to find intersection candidates.
-
-Links:
-Deferred rendering using subpasses: https://www.saschawillems.de/blog/2018/07/19/vulkan-input-attachments-and-sub-passes/
-Frostbite Standard Material Model:
-https://seblagarde.files.wordpress.com/2015/07/course_notes_moving_frostbite_to_pbr_v32.pdf
-
-Particle systems:
-https://www.gamasutra.com/view/feature/3157/building_an_advanced_particle_.php
-
-
-Physics Simulation particle based:
-https://developer.nvidia.com/gpugems/gpugems3/part-v-physics-simulation/chapter-29-real-time-rigid-body-simulation-gpus
-
-
-Broadphase collision detection
-https://developer.nvidia.com/gpugems/gpugems3/part-v-physics-simulation/chapter-32-broad-phase-collision-detection-cuda
-
-
-
-Libs: 
-https://github.com/ocornut/imgui
-https://github.com/tinyobjloader/tinyobjloader
-https://github.com/glfw/glfw
-https://github.com/g-truc/glm
-https://github.com/nothings/stb -->
