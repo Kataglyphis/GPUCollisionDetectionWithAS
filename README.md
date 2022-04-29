@@ -188,8 +188,8 @@ Physics Simulation
 * [Real-Time Rigid Body Simulation on GPUs](https://developer.nvidia.com/gpugems/gpugems3/part-v-physics-simulation/chapter-29-real-time-rigid-body-simulation-gpus)
 
 Particles
-*[Verlet Integration](https://de.wikipedia.org/wiki/Verlet-Algorithmus)
-*[Vector Fields](https://docs.unrealengine.com/4.27/en-US/RenderingAndGraphics/ParticleSystems/VectorFields/)
+* [Verlet Integration](https://de.wikipedia.org/wiki/Verlet-Algorithmus)
+* [Vector Fields](https://docs.unrealengine.com/4.27/en-US/RenderingAndGraphics/ParticleSystems/VectorFields/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
