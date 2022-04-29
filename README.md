@@ -5,8 +5,6 @@ Lets collide some things on the GPU with AS.
   <br>
   <a href="https://jotrocken.blog/"><img src="images/logo.png" alt="OpenGLEngine" width="200"></a>
   <br>
-  Cataglyphis Renderer
-  <br>
 </h1>
 
 <h1 align="center">
