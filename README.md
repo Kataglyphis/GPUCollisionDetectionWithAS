@@ -1,19 +1,23 @@
 # GPUCollisionDetectionWithAS
 Lets collide some things on the GPU with the brand new acceleration structures.
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=BX9AVVES2P9LN)
+[![Twitter](https://img.shields.io/twitter/follow/Cataglyphis_?style=social)](https://twitter.com/Cataglyphis_)
+[![TopLang](https://img.shields.io/github/languages/top/Kataglyphis/GPUCollisionDetectionWithAS)](https://jotrockenmitlocken.de/)
+
 <h1 align="center">
   <br>
-  <a href="https://jotrocken.blog/"><img src="images/logo.png" alt="OpenGLEngine" width="200"></a>
+  <a href="https://jotrockenmitlocken.de/"><img src="images/logo.png" alt="OpenGLEngine" width="200"></a>
   <br>
 </h1>
 
 <h1 align="center">
   <br>
-  <a href="https://jotrocken.blog/"><img src="images/vulkan-logo.png" alt="OpenGLEngine" width="400"></a>
-  <a href="https://jotrocken.blog/"><img src="images/glm_logo.png" alt="OpenGLEngine" width="200"></a>
+  <a href="https://jotrockenmitlocken.de/"><img src="images/vulkan-logo.png" alt="OpenGLEngine" width="400"></a>
+  <a href="https://jotrockenmitlocken.de/"><img src="images/glm_logo.png" alt="OpenGLEngine" width="200"></a>
 </h1>
 
-<h4 align="center">A graphics engine built on top of Vulkan <a href="https://jotrocken.blog/" target="_blank"></a>.</h4>
+<h4 align="center">A graphics engine built on top of Vulkan <a href="https://jotrockenmitlocken.de/" target="_blank"></a>.</h4>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
@@ -57,7 +61,7 @@ Lets collide some things on the GPU with the brand new acceleration structures.
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Kataglyphis Engine][product-screenshot]](https://jotrocken.blog/)
+[![Kataglyphis Engine][product-screenshot]](https://jotrockenmitlocken.de/)
 
 Have a look on the Milestone document for further information.
 
@@ -115,7 +119,7 @@ Now automatically compiled for you. No extra work needed :))
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-_For more examples, please refer to the [Documentation](https://jotrocken.blog/)_
+_For more examples, please refer to the [Documentation](https://jotrockenmitlocken.de/)_
 
 
 <!-- ROADMAP -->
